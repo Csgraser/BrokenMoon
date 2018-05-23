@@ -1,0 +1,33 @@
+{
+  "name": "The-Broken-Moon",
+  "version": "1.0.0",
+  "description": "1. This is a fullstack app using Sequelize, Handlebars, NODEJS, Express, MDBootstrap, and Google-auth-Library to create a ladder RPG in a fantasy setting.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brainchomper/The-Broken-Moon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brainchomper/The-Broken-Moon/issues"
+  },
+  "homepage": "https://github.com/brainchomper/The-Broken-Moon#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mocha": "^5.1.1",
+    "mysql2": "^1.5.3",
+    "path": "^0.12.7",
+    "sequelize": "^4.37.7"
+  }
+}

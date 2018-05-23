@@ -1,0 +1,51 @@
+<div class="row menuGame">
+	
+	<div class="col"></div>
+
+	<div class="col mainpage-col">
+		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+		<img src="./images/broken-moon.png" class="img-fluid menu-image" alt="Broken Moon">
+		<img src= "./images/brokenmoontitle.png"
+		class="img-fluid menu-image" alt="Broken Moon">
+		<div class="g-menu" data-theme="dark"></div>
+<button onclick="window.location.href='/fight_screen'" type="button" class="btn btn-fight btn-success btn-block">Fight</button>
+<p></p>
+<button onclick="window.location.href='/character_creator'" type="button" class="btn btn-characterCreate btn-block">Character Creation</button>
+<p></p>		{{!-- <a class="btn btn-characterCreate" href="/character_creator" role="button">Character Creation</a> --}}
+<button onclick="window.location.href='/character_selector'" type="button" class="btn btn-characterSelect btn-block">Character Selection</button>
+	<p></p>
+		{{!-- logout btn --}}
+		<button type="button" class="btn btn-danger btn-rounded btn-block" id="logout" onclick="signOut();">Sign Out</button>
+
+
+	</div>
+	<div class="col"></div>
+</div>
+
+{{!-- JS --}}
+<script>
+	//check for login then redirect if not
+	var cookies = Cookies.get('id_token');
+	if (cookies == undefined) {
+		location.href = "/";
+	}
+	// end login check
+	//user data pull info
+	$.ajax({
+		url: "/api/user/info",
+		type: "GET",
+		data: {
+			id_token: cookies
+		},
+	}).then(function (data) {
+		console.log("databse user", data);
+	})
+	//end user data pull
+	//logout
+	function signOut() {
+		Cookies.remove('id_token');
+		document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://the-broken-moon.herokuapp.com/"
+	}
+// end logout
+</script>

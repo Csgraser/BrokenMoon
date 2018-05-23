@@ -1,0 +1,26 @@
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<div class="row gameOver">
+	<div class="col"></div>
+	<div class="col mainpage-col">
+		<img src="./images/gameover.png" class="img-fluid animated fadeInLeft" alt="game over">
+		<div class="g-over" data-theme="dark"></div>
+
+		<a class="btn btn-restart" href="/menu" role="button">Restart</a>
+		<p></p>
+		<button type="button" class="btn btn-danger btn-rounded btn-block" id="logout" onclick="signOut();">Sign Out</button>
+
+
+
+	</div>
+	<div class="col"></div>
+</div>
+<script>
+	var cookies = Cookies.get('id_token');
+	if (cookies == undefined) {
+		location.href = "/";
+	}
+	function signOut() {
+		Cookies.remove('id_token');
+		document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://the-broken-moon.herokuapp.com/"
+	}
+</script>

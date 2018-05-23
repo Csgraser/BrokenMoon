@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/selector_css.css">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<div class="container">
+
+	<div class="row">
+		<div class="col"><button onclick="window.location.href='/menu'" type="button" class="btn btn-deep-orange btn-lg btn-block" id="menuBtn">Back to the menu!</button></div>
+	</div>
+	
+</div>
+<div class="container cards">
+	{{!-- handlebars all the rogue characters --}} {{#each characters}}
+
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">{{this.character_name1}} {{this.character_name2}}</h4>
+			<h6 class="card-subtitle mb-2 text-muted">A Level {{this.level}} {{this.character_class}}</h6>
+			<img src={{this.character_img}} alt="" class="cardImg">
+
+			<div class="row">
+				<div class="col th1">HP</div>
+				<div class="col th1">STR</div>
+				<div class="col th1">AGI</div>
+				<div class="col th1">INT</div>
+			</div>
+			<div class="row">
+				<div class="col td1">{{this.hp}}</div>
+				<div class="col td1">{{this.str}}</div>
+				<div class="col td1">{{this.agi}}</div>
+				<div class="col td1">{{this.int}}</div>
+			</div>
+			<button id="{{this.id}}" class="btn btn-success pickCharacter" onclick="window.location.href='/fight_screen'"> Select This Character!</button>
+		</div>
+	</div>
+
+	{{/each}}
+</div>
+
+<script>
+	var cookies = Cookies.get('id_token');
+		if (cookies == undefined) {
+		location.href = "/";
+	}
+</script>
+<script src="/javascript/characterSelectorApp.js"></script>

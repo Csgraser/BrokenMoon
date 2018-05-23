@@ -1,0 +1,39 @@
+
+<div class="container fightGame" id="fightGame">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	<div class="text-center">
+		<button onclick="window.location.href='/menu'" type="button" class="btn btn-deep-orange btn-block" id="menuBtn">Back to the menu!</button>
+	</div>
+	<div class="row" id="fightRow"></div>
+	{{!-- info for the character --}}
+	<div class="row">
+		{{#each character}}
+		<div class="charFight">
+			<p class="characterText">{{this.character_name1}} {{this.character_name2}} is ready to fight!</p>
+			<img id="char1" class="displayFightChar" src="images/characterimages/wizard.png">
+		</div>
+		{{/each}}
+		<div class="text-center">
+			<div id="challengeBtns">
+				<button class="btn btn-primary monsterSearchBtn" value="Easy">Fight Easy Monster</button>
+				<button class="btn btn-secondary monsterSearchBtn" value="Medium">Fight Medium Monster</button>
+				<button class="btn btn-danger monsterSearchBtn" value="Hard">Fight Hard Monster</button>
+				<button class="btn btn-danger monsterSearchBtn" value="Boss">Fight Boss</button>
+
+			</div>
+		</div>
+		{{!-- info for the monster and the buttons --}}
+		<div class="col md 6" id="monsterDiv">
+
+		</div>
+	</div>
+</div>
+<script>
+	var cookies = Cookies.get('id_token');
+	if (cookies == undefined) {
+		location.href = "/";
+	}
+</script>
+
+
+<script src="javascript/fightscreenApp.js"></script>

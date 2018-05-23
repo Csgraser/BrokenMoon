@@ -1,0 +1,58 @@
+<div class="row mainGame">
+
+	<div class="col"></div>
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	<div class="col mainpage-col">
+		<img src="./images/broken-moon.png" class="img-fluid" alt="Broken Moon">
+		<img src="./images/brokenmoontitle.png" class="img-fluid" alt="Broken Moon">
+		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+	</div>
+
+	<div class="col"></div>
+
+</div>
+
+{{!-- JS --}}
+<script>
+	var cookie = Cookies.get();
+	console.log("cookie ----" + cookie);
+	//google auth code 
+	function onSignIn(googleUser) {
+		var profile = googleUser.getBasicProfile();
+		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		console.log('Name: ' + profile.getName());
+		console.log('Image URL: ' + profile.getImageUrl());
+		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		// The ID token you need to pass to your backend:
+//		var user_id = googleUser.getAuthResponse().id_token;
+	//	console.log("ID Token: " + id_token);
+		var id_token = profile.getId();
+		Cookies.set('id_token', id_token);
+
+		dbCall();
+		function dbCall() {
+			$.ajax({
+				url: "/api/user",
+				type: "POST",
+				data: {
+					user_id: profile.getId(),
+					user_name: profile.getName(),
+					user_email: profile.getEmail(),
+					user_photo: profile.getImageUrl()
+				},
+
+			}).then(function (data) {
+				location.href = "/menu";
+			});
+		}
+	}// end google auth
+
+	//logout
+	function signOut() {
+		var logout = function () {
+			Cookies.remove('id_token');
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://the-broken-moon-herokuapp.com"
+		}
+	}//end logout
+</script>

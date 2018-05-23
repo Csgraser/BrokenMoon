@@ -1,0 +1,11 @@
+body{
+	margin: auto;	
+	width: 80%;
+	background-color: black;
+}
+.mainpage-col{
+	align-content: center;
+}
+.img-center{
+	width: 10%;
+}

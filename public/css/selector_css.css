@@ -1,0 +1,53 @@
+.card {
+	width: 30%;
+	justify-content: space-around;
+	align-content: center;
+	margin: 8px;
+
+}
+.card-body {
+	text-align: center;
+	margin: auto;
+}
+
+.container.cards {
+	flex-wrap: wrap;
+	justify-content: space-around;
+	flex-direction: row;
+	display: flex;
+	margin: auto;
+}
+
+.cardImg {
+	width: 85%;
+	margin: auto;
+	display: block;
+}
+.statsTable, tbody {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+	text-align: center;
+	align-items: center;
+};
+
+.th1, 
+.td1
+{
+	margin: auto;
+	text-align: center;
+	width: 20%;
+}
+
+.pickCharacter, .statsTable{
+	margin-top: 10px;
+};
+
+.card.selectedCharacter{
+	border: 5px solid purple;
+	background-color: purple;
+}
+.hidden {
+	display: none;
+}
